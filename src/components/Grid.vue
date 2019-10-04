@@ -1,71 +1,74 @@
 <template>
-    <div class = "Grid">
-        <h1>{{ "GRID SHOULD BE HERE" }}</h1>
-    <ul id="GRID HERE">
-<!--        <li v-for="(kek, index) in kek[0]" :key="index">-->
-<!--            {{tile.x}}:{{tile.y}},-->
-<!--        </li>-->
-    </ul>
+  <div class="Grid">
+    <h1>{{ "GRID SHOULD BE HERE" }}</h1>
+    <div id="GRID">
+      <ul  class="row" v-for="(tiles, index) in tiles" :key="index">
+        <li v-text="tiles.x"></li>
+        <ul  class="col" v-for="(tiles, index) in tiles" :key="index">
+          <li v-text="tiles.y"></li>
+        </ul>
+      </ul>
     </div>
+    <div id="container"></div>
+  </div>
 </template>
 
 <script>
-    class Tile
-    {
-        constructor(x, y)
-        {
-            this.x = x;
-            this.y = y;
-            this.isWall = Boolean;
-        }
+export default {
+  name: "Grid",
+  data() {
+    return {
+      width: 10,
+      height: 10,
+      tiles: [[]],
+      Tile: {
+        x: 0,
+        y: 0,
+        isWall: false
+      }
+    };
+  },
+  mounted() {
+    this.initializeTiles();
+  },
+  methods: {
+    initializeTiles() {
+      for (var x = 0; x < this.width; x++) {
+        this.tiles[x] = [this.height];
+      }
 
-        flipIsWall() //Swaps is wall from false -> true or true -> false
-        {
-            this.isWall = !this.isWall;
+      for (var y = 0; y < this.height; y++) {
+        for (var x = 0; x < this.width; x++) {
+          this.tiles[x][y] = this.Tile;
+          // document.write("("+x+","+y+")")
         }
-
-        toString()
-        {
-            console.log(this.x+", "+this.y);
-        }
+        // document.write("</br>")
+      }
+    },
+    flipIsWall: () => {
+      //Swaps is wall from false -> true or true -> false
+      this.isWall = !this.isWall;
+    },
+    toString: () => {
+      console.log(this.x + ", " + this.y);
     }
-
-    class Grid{
-        constructor() {
-            this.width = 10;
-            this.height = 10;
-            this.tiles = [[]];
-            this.initializeTiles();
-        }
-
-        initializeTiles()
-        {
-            for(var x = 0; x < this.width; x++)
-            {
-                this.tiles[x] = [];
-                for(var y = 0; y < this.height; y++)
-                {
-                    this.tiles[x][y] = new Tile(x,y);
-                }
-            }
-        }
-
-        toString()
-        {
-            console.log("width: "+this.width+", height: "+this.height);
-        }
-    }
-
-    export default {
-        name: "Grid",
-        data: function(){
-                return {
-                    Grid: Grid
-                }
-            }
-    }
+  }
+};
 </script>
 
 <style scoped>
+div#GRID  {
+  width: 800px;
+  height: 400px;
+  padding: 20px;
+  background: black;
+}
+#GRID ul{
+  display: flex;
+  list-style: none;
+}
+#GRID li {
+  border: 3px solid green;
+}
 
 </style>

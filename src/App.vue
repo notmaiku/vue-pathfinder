@@ -1,13 +1,12 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-    <Grid />
+  <div id="#app">
+    <Nav />
+    <Grid/>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import Nav from "./components/Nav.vue";
 import Grid from "./components/Grid.vue";
 
 // const grid = new Grid(10, 10);
@@ -16,7 +15,7 @@ import Grid from "./components/Grid.vue";
 export default {
   name: "app",
   components: {
-    HelloWorld,
+    Nav,
     Grid
   }
 };
@@ -24,4 +23,8 @@ export default {
 
 <style lang="scss" scoped>
 @import "src/assets/s/style.scss";
+#app {
+  background: #424242;
+  height: 100%;
+}
 </style>

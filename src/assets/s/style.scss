@@ -1,26 +1,44 @@
-h3 {
-    margin: 40px 0 0;
+
+// my styles start
+body{
+    background: #414142;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
+#nav {
+    display: flex;
+    background: #27272F;
+    padding: 20px;
 }
 
-li {
-    display: inline-block;
-    margin: 0 10px;
+#nav div {
+    display: flex;
+    width: 100%;
 }
 
-a {
-    color: #42b983;
+#nav ul {
+    display: flex;
 }
 
-#app {
-    font-family: "Avenir", Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
+div .right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#nav li {
+    margin-right: 40px;
+    color: #fff;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 37px;
+}
+
+.fas {
+    margin-left: 10px;
+}
+
+
+#nav ul {
+    list-style: none;
 }

@@ -1,15 +1,12 @@
 <template>
   <div class="Grid">
-    <h1>{{ "GRID SHOULD BE HERE" }}</h1>
-    <div id="GRID">
-      <ul  class="row" v-for="(tiles, index) in tiles" :key="index">
-        <li v-text="tiles.x"></li>
+    <table id="GRID">
+      <tr  class="row" v-for="(tiles, index) in tiles" :key="index">
         <ul  class="col" v-for="(tiles, index) in tiles" :key="index">
-          <li v-text="tiles.y"></li>
+          <td id="tile" v-bind:style="tiles" v-on:click="changeColor"></td>
         </ul>
-      </ul>
-    </div>
-    <div id="container"></div>
+      </tr>
+    </table>
   </div>
 </template>
 
@@ -25,10 +22,10 @@ export default {
         x: 0,
         y: 0,
         isWall: false
-      }
+      },
     };
   },
-  mounted() {
+  created() {
     this.initializeTiles();
   },
   methods: {
@@ -51,24 +48,14 @@ export default {
     },
     toString: () => {
       console.log(this.x + ", " + this.y);
+    },
+    changeColor(prop) {
+      var prop = document.getElementById("tile").style.backgroundColor="#FFFFFF";
     }
   }
 };
 </script>
 
-<style scoped>
-div#GRID  {
-  width: 800px;
-  height: 400px;
-  padding: 20px;
-  background: black;
-}
-#GRID ul{
-  display: flex;
-  list-style: none;
-}
-#GRID li {
-  border: 3px solid green;
-}
-
+<style lang="scss" scoped>
+@import "src/assets/s/style.scss";
 </style>

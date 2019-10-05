@@ -22,9 +22,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/assets/s/style.scss";
-#app {
-  background: #424242;
-  height: 100%;
-}
+@import "src/assets/scss/style.scss";
 </style>

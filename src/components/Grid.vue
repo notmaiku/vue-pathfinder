@@ -1,9 +1,9 @@
 <template>
   <div class="Grid">
     <table id="GRID">
-      <tr  class="row" v-for="(tiles, index) in tiles" :key="index">
-        <ul  class="col" v-for="(tiles, index) in tiles" :key="index">
-          <td id="tile" v-bind:style="tiles" v-on:click="changeColor"></td>
+      <tr class="row" v-for="(tiles, index) in tiles" :key="index">
+        <ul class="col" v-for="(tiles, index) in tiles" :key="index">
+          <td :id="tiles" v-bind:style="tiles"></td>
         </ul>
       </tr>
     </table>
@@ -19,43 +19,55 @@ export default {
       height: 10,
       tiles: [[]],
       Tile: {
-        x: 0,
-        y: 0,
+        x: 1,
+        y: 1,
         isWall: false
-      },
+      }
     };
   },
   created() {
     this.initializeTiles();
   },
+  mounted() {
+    this.changeColor();
+  },
+
   methods: {
     initializeTiles() {
-      for (var x = 0; x < this.width; x++) {
-        this.tiles[x] = [this.height];
+      for (var x = 0; x <= this.height; x++) {
+        this.tiles[x] = [this.width];
       }
 
-      for (var y = 0; y < this.height; y++) {
-        for (var x = 0; x < this.width; x++) {
-          this.tiles[x][y] = this.Tile;
+      for (var x = 0; x <= this.width; x++) {
+        for (var y = 0; y <= this.height; y++) {
+          this.id = x + "," + y;
+          this.Tile = this.id;
+          this.tiles[y][x] = this.Tile;
           // document.write("("+x+","+y+")")
         }
         // document.write("</br>")
       }
     },
-    flipIsWall: () => {
+    flipIsWall() {
       //Swaps is wall from false -> true or true -> false
       this.isWall = !this.isWall;
     },
     toString: () => {
       console.log(this.x + ", " + this.y);
     },
-    changeColor(prop) {
-      var prop = document.getElementById("tile").style.backgroundColor="#FFFFFF";
+    changeColor() {
+      const tiles = document.querySelectorAll("td");
+      tiles.forEach(tile => {
+        var coord = document.getElementById(tile.id);
+        coord.addEventListener("click", event => {
+          coord.style.backgroundColor = "#1c1c54";
+        });
+      });
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-@import "src/assets/s/style.scss";
+@import "src/assets/scss/style.scss";
 </style>

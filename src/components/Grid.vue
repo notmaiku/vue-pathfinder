@@ -3,7 +3,7 @@
     <table id="GRID">
       <tr class="col" v-for="(tiles, index) in tiles" :key="index">
         <ul class="row" v-for="(tiles, index) in tiles" :key="index">
-          <td :id="tiles.id" v-on:click="flipIsWall" ></td>
+          <td :id="tiles.id" v-on:click="flipIsWall"></td>
         </ul>
       </tr>
     </table>
@@ -15,7 +15,7 @@ export default {
   name: "Grid",
   data() {
     return {
-      width: 30,
+      width: 10,
       height: 10,
       tiles: [[]],
       Tile: {
@@ -28,27 +28,20 @@ export default {
   },
   created() {
     this.initializeTiles();
-    this.printTiles();
   },
   methods: {
-
-    createArray(length) {
-      var arr = new Array(length || 0),
-          i = length;
-      if (arguments.length > 1)
-      {
-        var args = Array.prototype.slice.call(arguments, 1);
-        while(i--) arr[length-1 - i] = this.createArray.apply(this, args);
+    initializeTiles() {
+      for (var x = 0; x <= this.height; x++) {
+        this.tiles[x] = [this.width];
       }
-
       for (var x = 0; x <= this.width; x++) {
         for (var y = 0; y <= this.height; y++) {
-          this.id = y + "," + x;
-          var Tile = { x: y, y: x, isWall: false, id: this.id };
-          this.tiles[x][y] = Tile;
-
+          this.id = x + "," + y;
+          let createdTile = { id: this.id, x: x, y: y, isWall: false };
+          this.tiles[x][y] = createdTile;
           // document.write("("+x+","+y+")")
         }
+        // document.write("</br>")
       }
     },
     toString() {
@@ -57,13 +50,14 @@ export default {
     flipIsWall() {
       const tileSelect = document.querySelectorAll("td");
       tileSelect.forEach(tile => {
+        console.log(tile);
         var coord = document.getElementById(tile.id);
         coord.addEventListener("click", event => {
           console.log(coord);
-          coord.style.backgroundColor = "#1c1c54";
+          coord.style.backgroundColor = "#1EB980";
           this.tiles.forEach(index => {
-            for(var i = 0; i < 10; i++){
-              if(index[i].id == tile.id){
+            for (var i = 0; i < 10; i++) {
+              if (index[i].id == tile.id) {
                 index[i].isWall = true;
               }
             }

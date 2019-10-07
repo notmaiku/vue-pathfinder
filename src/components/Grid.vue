@@ -3,7 +3,7 @@
     <table id="GRID">
       <tr class="col" v-for="(tiles, index) in tiles" :key="index">
         <ul class="row" v-for="(tiles, index) in tiles" :key="index">
-          <td :id="tiles.id" v-on:click="flipIsWall"></td>
+          <td :id="tiles.id" v-on:click="flipIsWall" />
         </ul>
       </tr>
     </table>
@@ -11,19 +11,14 @@
 </template>
 
 <script>
+import { create } from "domain";
 export default {
   name: "Grid",
   data() {
     return {
-      width: 10,
-      height: 10,
-      tiles: [[]],
-      Tile: {
-        id: "",
-        x: 0,
-        y: 0,
-        isWall: false
-      }
+      width: 50,
+      height: 20,
+      tiles: [],
     };
   },
   created() {
@@ -31,21 +26,16 @@ export default {
   },
   methods: {
     initializeTiles() {
-      for (var x = 0; x <= this.height; x++) {
-        this.tiles[x] = [this.width];
+      for (var x = 0; x < this.height; x++) {
+        this.tiles[x] = [];
       }
-      for (var x = 0; x <= this.width; x++) {
-        for (var y = 0; y <= this.height; y++) {
+      for (var x = 0; x < this.width; x++) {
+        for (var y = 0; y < this.height; y++) {
           this.id = x + "," + y;
           let createdTile = { id: this.id, x: x, y: y, isWall: false };
-          this.tiles[x][y] = createdTile;
-          // document.write("("+x+","+y+")")
+          this.tiles[y].push(createdTile);
         }
-        // document.write("</br>")
       }
-    },
-    toString() {
-      console.log(this.x + ", " + this.y);
     },
     flipIsWall() {
       const tileSelect = document.querySelectorAll("td");

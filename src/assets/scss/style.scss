@@ -1,6 +1,7 @@
 html {
 	box-sizing: border-box;
 }
+
 *,
 *:before,
 *:after {
@@ -8,41 +9,60 @@ html {
 }
 
 // my styles start
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 $dark-green: #045d56;
+$light-green: #1EB980;
 
 body {
 	background: #414142;
 }
 
 #nav {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 	background: #27272f;
-	padding: 20px;
+	justify-content: space-between;
+	height: 80px;
+	font-family: Roboto
 }
 
-#nav div {
+#nav div .left {
 	display: flex;
 	width: 100%;
 }
 
 #nav ul {
 	display: flex;
-    flex-wrap: nowrap;
+	flex-wrap: nowrap;
+	align-items: center;
 }
 
 div .right {
-    justify-content: flex-end;
-    flex-wrap: nowrap;
+	justify-content: flex-end;
+	flex-wrap: nowrap;
 }
 
 #nav li {
 	margin-right: 40px;
 	color: #fff;
-	font-family: Roboto;
+	font-family: 'Roboto', sans-serif;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 32px;
+	font-size: 24px;
+
+	h1 {
+		font-size: 32px;
+		margin: 0px;
+	}
+	p {
+		margin: 0px;
+	}
+	a{
+		text-decoration: none;
+		color: #fff;
+		display: flex;
+	}
 }
 
 .fas {
@@ -56,10 +76,12 @@ div .right {
 div.Grid {
 	padding: 20px 0 0 0;
 }
+
 table#GRID {
 	background: $dark-green;
 	border-spacing: 1px;
 }
+
 #GRID tr {
 	list-style: none;
 	display: flex;
@@ -75,7 +97,14 @@ table#GRID {
 	margin: 0px;
 }
 
+// hovers
+#nav li:hover {
+	border-bottom: 2px solid $light-green;
+}
+
 // mobile
-@media (max-width: 800px){
-    #nav li {font-size: 16px;}
+@media (max-width: 800px) {
+	#nav li {
+		font-size: 16px;
+	}
 }

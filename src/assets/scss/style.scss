@@ -55,10 +55,12 @@ div .right {
 		font-size: 32px;
 		margin: 0px;
 	}
+
 	p {
 		margin: 0px;
 	}
-	a{
+
+	a {
 		text-decoration: none;
 		color: #fff;
 		display: flex;
@@ -95,6 +97,18 @@ table#GRID {
 #GRID ul.row {
 	padding-left: 0px;
 	margin: 0px;
+}
+
+.wall {
+	background: $light-green;
+}
+
+.pathBegin {
+	background: #ffffff
+}
+
+.pathEnd {
+	background: #000000
 }
 
 // hovers

@@ -3,7 +3,9 @@
     <table id="GRID">
       <tr class="col" v-for="(tiles, index) in tiles" :key="index">
         <ul class="row" v-for="(tiles, index) in tiles" :key="index">
-          <td :id="tiles.id" v-on:click="flipIsWall" />
+          <td v-if="tiles.pathBegin === true" :id="tiles.id" v-bind:style="startColor"></td>
+          <td v-else-if="tiles.pathEnd === true" :id="tiles.id" v-bind:style="stopColor" ></td>
+          <td v-else :id="tiles.id"  v-bind:style="tiles.isWall ? { 'backgroundColor':  'red'} : {'backgroundColor' : 'blue'}" v-on:click="flipIsWall(tiles.x, tiles.y)" ></td>
         </ul>
       </tr>
     </table>
@@ -19,6 +21,19 @@ export default {
       width: 50,
       height: 20,
       tiles: [],
+      wallOn: {
+        backgroundColor: '#1EB980'
+      },
+      wallOff: {
+        backgroundColor: 'transparent'
+      },
+      startColor: {
+        backgroundColor: 'green'
+      },
+      stopColor:  {
+        backgroundColor: 'red'
+      },
+      
     };
   },
   created() {
@@ -32,28 +47,20 @@ export default {
       for (var x = 0; x < this.width; x++) {
         for (var y = 0; y < this.height; y++) {
           this.id = x + "," + y;
-          let createdTile = { id: this.id, x: x, y: y, isWall: false };
+          let createdTile = {
+            id: this.id,
+            x: x,
+            y: y,
+            isWall: true,
+            pathBegin: x === 12 && y === 10,
+            pathEnd: x === 38 && y == 10
+          };
           this.tiles[y].push(createdTile);
         }
       }
     },
-    flipIsWall() {
-      const tileSelect = document.querySelectorAll("td");
-      tileSelect.forEach(tile => {
-        console.log(tile);
-        var coord = document.getElementById(tile.id);
-        coord.addEventListener("click", event => {
-          console.log(coord);
-          coord.style.backgroundColor = "#1EB980";
-          this.tiles.forEach(index => {
-            for (var i = 0; i < 10; i++) {
-              if (index[i].id == tile.id) {
-                index[i].isWall = true;
-              }
-            }
-          });
-        });
-      });
+    flipIsWall(x,y) {
+      this.tiles[x][y].isWall = true;
     }
   }
 };

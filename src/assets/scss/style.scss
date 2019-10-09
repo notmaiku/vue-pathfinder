@@ -99,8 +99,8 @@ table#GRID {
 	margin: 0px;
 }
 
-.wall {
-	background: $light-green;
+td.wallOn {
+	background: $light-green !important;
 }
 
 .pathBegin {
@@ -109,6 +109,14 @@ table#GRID {
 
 .pathEnd {
 	background: #000000
+}
+
+.startColor {
+	background: rgb(204, 28, 28) !important;
+}
+
+.stopColor {
+	background: rgb(38, 211, 22) !important;
 }
 
 // hovers

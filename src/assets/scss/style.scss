@@ -13,9 +13,11 @@ html {
 
 $dark-green: #045d56;
 $light-green: #1EB980;
+$darkish-gray: #1f1f1f;
+$dark-gray: #c9c9c986;
 
 body {
-	background: #414142;
+	background: #0f0f0f;
 }
 
 // nav begins
@@ -25,7 +27,8 @@ body {
 	background: #27272f;
 	justify-content: space-between;
 	height: 80px;
-	font-family: Roboto
+	font-family: Roboto;
+	margin-bottom: 20px;
 }
 
 #nav div .left {
@@ -78,12 +81,9 @@ div .right {
 
 // grid begins
 
-div.Grid {
-	padding: 20px 0 0 0;
-}
 
 table#GRID {
-	background: $dark-green;
+	background: $dark-gray;
 	border-spacing: 1px;
 }
 
@@ -94,7 +94,7 @@ table#GRID {
 
 #GRID td {
 	padding: 15px;
-	background: #27272f;
+	background: $darkish-gray;
 }
 
 #GRID ul.row {
@@ -142,22 +142,22 @@ td.wallOn {
 @keyframes visitedAnimation {
 	0% {
 		transform: scale(0.3);
-		background-color: rgba(0, 0, 66, 0.75);
+		background-color: rgba(0, 64, 201, 0.75);
 		border-radius: 100%;
 	}
 
 	50% {
-		background-color: rgba(17, 104, 217, 0.75);
+		background-color: rgba(18, 70, 94, 0.75);
 	}
 
 	75% {
 		transform: scale(1.2);
-		background-color: rgba(0, 217, 159, 0.75);
+		background-color: rgba(144, 151, 214, 0.75);
 	}
 
 	100% {
 		transform: scale(1);
-		background-color: rgba(0, 190, 218, 0.75);
+		background-color: rgba(126, 185, 212, 0.75);
 	}
 }
 

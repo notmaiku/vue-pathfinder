@@ -1,12 +1,10 @@
 <template>
   <div id="#app">
-    <Controls/>
-    <Grid ref="method "/>
+    <Grid/>
   </div>
 </template>
 
 <script>
-import Controls from "@/components/Controls.vue";
 import Grid from "@/components/Grid.vue";
 
 // const grid = new Grid(10, 10);
@@ -15,7 +13,6 @@ import Grid from "@/components/Grid.vue";
 export default {
   name: "app",
   components: {
-    Controls,
     Grid
   },
 };

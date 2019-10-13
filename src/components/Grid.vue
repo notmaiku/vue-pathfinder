@@ -1,6 +1,6 @@
 <template>
   <div class="Grid">
-    <button v-on:click="visualizeDijkstra()">start</button>
+    <Controls v-on:visualize="visualizeDijkstra()"/>
     <table id="GRID">
       <tr class="col" v-for="(row, rowIndex) in tiles" :key="rowIndex">
         <ul class="row" v-for="(tile, colIndex) in row" :key="colIndex">
@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import Controls from "@/components/Controls.vue";
 import { dijkstra, getTilesInShortestPathOrder } from "@/algo/dijkstra";
 export default {
   name: "Grid",
@@ -35,12 +36,21 @@ export default {
       width: 50,
       height: 20,
       tiles: [],
-      mouseIsPressed: false
+      mouseIsPressed: false,
+      beginX: 12,
+      beginY: 10,
+      endX: 32,
+      endY: 15,
     };
+  },
+  components: {
+    Controls
   },
   created() {
     // on init create the grid
     this.initializeTiles();
+  },
+  updated() {
   },
   methods: {
     // makes the array grid
@@ -66,8 +76,8 @@ export default {
         isVisisted: false,
         previousTile: null,
         distance: Infinity,
-        pathBegin: x === 12 && y === 10,
-        pathEnd: x === 38 && y == 10
+        pathBegin: x === this.beginX && y === this.beginY,
+        pathEnd: x === this.endX && y === this.endY 
       };
     },
     // called when click just first click
@@ -90,8 +100,8 @@ export default {
     },
     visualizeDijkstra() {
       let tiles = this.tiles;
-      let begin = tiles[10][12];
-      let end = tiles[10][38];
+      let begin = tiles[this.beginY][this.beginX];
+      let end = tiles[this.endY][this.endX];
       const visitedTilesInOrder = dijkstra(tiles, begin, end);
       const tilesInShortestPathOrder = getTilesInShortestPathOrder(end);
       this.animateDijkstra(visitedTilesInOrder, tilesInShortestPathOrder)
@@ -108,6 +118,7 @@ export default {
           const tile = visitedNodesInOrder[i];
           document.getElementById(`${tile.x},${tile.y}`).className =
             "tile-visited";
+
         }, 10 * i);
       }
     },
@@ -118,7 +129,7 @@ export default {
           const tile = tilesInShortestPathOrder[i];
           document.getElementById(`${tile.x},${tile.y}`).className =
             "tile-shortest-path";
-        }, 50 * i);
+        }, 80 * i);
       }
     }
   }

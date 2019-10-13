@@ -8,7 +8,7 @@
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="#" v-on:click="$emit('visualize')">
             <p>Start</p>
           </a>
         </li>
@@ -45,11 +45,9 @@
 
 <script>
 import  Grid  from "@/components/Grid.vue";
+
 export default {
   name: "controls",
-  components: {
-    Grid: Grid
-  },
 };
 </script>
 

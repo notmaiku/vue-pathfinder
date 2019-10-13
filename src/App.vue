@@ -1,13 +1,13 @@
 <template>
   <div id="#app">
-    <Nav />
-    <Grid/>
+    <Controls/>
+    <Grid ref="method "/>
   </div>
 </template>
 
 <script>
-import Nav from "./components/Nav.vue";
-import Grid from "./components/Grid.vue";
+import Controls from "@/components/Controls.vue";
+import Grid from "@/components/Grid.vue";
 
 // const grid = new Grid(10, 10);
 // grid.toString();
@@ -15,9 +15,9 @@ import Grid from "./components/Grid.vue";
 export default {
   name: "app",
   components: {
-    Nav,
+    Controls,
     Grid
-  }
+  },
 };
 </script>
 

@@ -106,7 +106,7 @@ export default {
         }
         setTimeout(() => {
           const tile = visitedNodesInOrder[i];
-          document.getElementById(`${tile.y},${tile.x}`).className =
+          document.getElementById(`${tile.x},${tile.y}`).className =
             "tile-visited";
         }, 10 * i);
       }
@@ -116,7 +116,7 @@ export default {
       for (let i = 0; i < tilesInShortestPathOrder.length; i++) {
         setTimeout(() => {
           const tile = tilesInShortestPathOrder[i];
-          document.getElementById(`${tile.y},${tile.x}`).className =
+          document.getElementById(`${tile.x},${tile.y}`).className =
             "tile-shortest-path";
         }, 50 * i);
       }

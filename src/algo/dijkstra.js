@@ -7,10 +7,10 @@ export function dijkstra(grid, pathBegin, pathEnd) {
         sortTilesByDistance(unvisitedTiles);
         const closestTile = unvisitedTiles.shift();
         if (closestTile.isWall) continue;
-        if (closestTile.distance === Infinity) return visitedTilesInOrder;
+        if (closestTile.distance == Infinity) return visitedTilesInOrder;
         closestTile.isVisited = true;
         visitedTilesInOrder.push(closestTile);
-        if (closestTile === pathEnd) return visitedTilesInOrder;
+        if (closestTile == pathEnd) return visitedTilesInOrder;
         updateUnvisitedNeighbors(closestTile, grid);
     }
 }
@@ -43,11 +43,11 @@ function updateUnvisitedNeighbors(tile, grid) {
 
 function getAllTiles(grid) {
     const tiles = [];
-    for (const y of grid) {
-        for(const tile of y){
+    grid.forEach(y => {
+        y.forEach(tile => {
             tiles.push(tile);
-        }
-    }
+        });
+    });
     return tiles;
 }
 
